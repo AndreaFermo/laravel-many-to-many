@@ -7,6 +7,7 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Titolo</th>
+        <th scope="col">Copertina</th>
         <th scope="col">Descrizione</th>
         <th scope="col">Azioni</th>
       
@@ -17,6 +18,7 @@
           <tr>
             <td>{{$project->id}}</td>
             <td>{{$project->title}}</td>
+            <td><img class="w-1" src="{{asset('storage/' . $project->image)}}" alt=""></td>
             <td>{{$project->description}}</td>
             <td class="d-flex">
               <a class="btn btn-primary" href="{{route('admin.projects.show', $project->slug)}}">Mostra</a>

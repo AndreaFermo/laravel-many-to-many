@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Type;
 use App\Models\Project;
 use App\Models\Technology;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -47,6 +48,11 @@ class ProjectController extends Controller
         $checkProject = Project::where('slug', $validated_data['slug'])->first();
         if ($checkProject) {
             return back()->withInput()->withErrors(['slug' => 'Titolo giá in uso']);
+        }
+
+        if ($request->hasFile('image')) {
+            $path = Storage::put('cover', $request->image);
+            $validated_data['image'] = $path;
         }
 
         $newProject = Project::create($validated_data);

@@ -1,6 +1,9 @@
 @extends('layouts.admin')
 @section('content')
     <h1 class="text-center mt-3 mb-5">Titolo: {{$project->title}}</h1>
+    <div class="d-flex justify-content-center">
+        <img class="" src="{{asset('storage/' . $project->image)}}" alt="">
+    </div>
     <h3 class="text-center mt-3 mb-5">Tipologia: {{$project->type?$project->type->name:'Nessuna tipologia assegnata'}}</h3>
     <div class="text-center">
         <span>Tecnlologie usate per il progetto: </span>
