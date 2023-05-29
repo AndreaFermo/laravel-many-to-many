@@ -28,6 +28,7 @@ Route::middleware(['auth', 'verified'])
         Route::resource('projects', ProjectController::class)->parameters([
             'projects' => 'project:slug'
         ]);
+        Route::get('projects/{slug}/deleteImage', [ProjectController::class, 'deleteImage'])->name('projects.deleteImage');
     });
 
 Route::middleware('auth')->group(function () {
